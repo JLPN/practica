@@ -1,0 +1,23 @@
+<div class="container">
+  <form (ngSubmit)="submit()" #forma="ngForm">
+
+    <label for="nombre"><b>Nombre</b></label>
+    <input type="text" #nombre="ngModel" [(ngModel)]="formulario.nombre"
+    placeholder="Ingrese nombre" name="nombre" minlength="5" maxlength="50"
+    class="form-control" required
+    [ngClass]="{'is-valid': !nombre.invalid, 'isinvalid': nombre.invalid}"
+    />
+
+    <div class="invalid-feedback" *ngIf="nombre.invalid && ( nombre.dirty || nombre.touched)">
+      <div *ngIf="nombre.errors.minlength">
+        Introduzca un nombre de 5 caracteres mínimo.
+      </div>
+      <div *ngIf="nombre.errors.required">
+        Introduzca un nombre.
+      </div>
+    </div>
+    <br/>
+    <hr/>
+    <button type="submit" [disabled]="!forma.valid" class="signup-btn">Enviar</button>
+  </form>
+</div>

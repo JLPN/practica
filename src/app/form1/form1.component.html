@@ -1,0 +1,51 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="formulario">
+
+    <label>Nombre</label>
+    <input type="text" formControlName="nombre" class="form-control"
+    [ngClass]="{ 'is-invalid': form.nombre.errors }" />
+    <div *ngIf = "form.nombre.errors" class="invalid-feedback" >
+      <div *ngIf = "form.nombre.errors.required" >El nombre es obligatorio</div>
+    </div>
+    <br/>
+    <br/>
+    <label>Email</label>
+    <input type="text" formControlName="email" class="form-control"
+    [ngClass]="{ 'is-invalid': form.email.errors }" />
+    <div *ngIf = "form.email.errors" class="invalid-feedback" >
+      <div *ngIf = "form.email.errors.required" >El email es obligatorio</div>
+      <div *ngIf = "form.email.errors.email" >El email debe ser valido</div>
+    </div>
+    <br/>
+    <br/>
+    <label>Contraseña</label>
+    <input type="password" formControlName="password" class="form-control"
+    [ngClass]="{ 'is-invalid': form.password.errors }" />
+    <div *ngIf = "form.password.errors" class="invalid-feedback" >
+      <div *ngIf = "form.password.errors.required" >El password es obligatorio</div>
+      <div *ngIf = "form.password.errors.minlength" >El password debe ser minimo 5 caracteres</div>
+    </div>
+    <br/>
+    <br/>
+    <label>Repetir Contraseña</label>
+    <input type="password" formControlName="repitaPassword" class="form-control"
+    [ngClass]="{ 'is-invalid': form.repitaPassword.errors }" />
+    <div *ngIf = "form.repitaPassword.errors" class="invalid-feedback" >
+      <div *ngIf = "form.repitaPassword.errors.required" >Repetir password es obligatorio</div>
+      <div *ngIf = "form.repitaPassword.errors.minlength" >El password debe ser minimo 5 caracteres</div>
+    </div>
+    <div *ngIf = "formulario.invalid" class="invalid-feedback" >
+      <div *ngIf = "MustMatch(form.password,form.repitaPassword)" >
+        Las contraseñas deben coincidir</div>
+    </div>
+
+    <br/>
+
+
+    <div class="text-center">
+
+      <button type="btn btn-primary mr-1" [disabled]="formulario.invalid" >Enviar Datos</button>
+      <button type="btn btn-secundary" type="reset" (click)="onReset()">Cancelar</button>
+    </div>
+  </form>
+</div>

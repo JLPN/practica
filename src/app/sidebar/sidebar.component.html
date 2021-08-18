@@ -1,0 +1,25 @@
+  <!-- Container for sidebar(s) + page content -->
+  <ng-sidebar-container>
+    <!-- A sidebar -->
+    <ng-sidebar [(opened)]="_opened" position="left">
+      <div class="text-justify mt-2 ml-4">
+        <button closeSidebar type="button" class="btn btn-primary">Cerrar</button>
+      </div>
+    </ng-sidebar>
+
+    <!-- Page content -->
+    <div ng-sidebar-content>
+      <div class="nav justify-content-center mt-2">
+        <div class="nav-item">
+          <a (click)="_toggleSidebar()" class="btn btn-primary">Toggle sidebar</a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Link 1</a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Link 2</a>
+        </div>
+      </div>
+    </div>
+  </ng-sidebar-container>
+`
